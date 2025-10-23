@@ -3,4 +3,8 @@ project(GZero)
 
 set(CMAKE_CXX_STANDARD 26)
 
-add_executable(GZero main.cpp)
+add_executable(GZero main.cpp
+        function.cpp
+        function.h
+        variable.cpp
+        variable.h)
