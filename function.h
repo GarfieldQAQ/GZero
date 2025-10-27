@@ -5,30 +5,45 @@
 #ifndef FUNCTION_H
 #define FUNCTION_H
 
-#include <vector>
-#include <cmath>
 
+
+#include <iostream>
+#include <cmath>
 class function{
 private:
     float input;
     float output;
 
 public:
-    function(float input){
+    explicit function(float input){
         function::input = input;
-        function::forward();
+        function::output = 0;
     }
-
+    virtual ~function() = default;                                      // 虚析构函数
     virtual void forward() {;}                                          // 前向传播更新 output
-    float getInput() { return input; }                                  // 获取 input
-    float returnOutput() { return output; }                             // 获取 output
+    virtual float backward() { return 0.0f;}                            // 反向传播更新 input 的梯度
+    [[nodiscard]] float getInput() const { return input; }              // 获取 input
+    [[nodiscard]] float returnOutput() const { return output; }         // 获取 output
     void setInput(float input) { function::input = input; }             // 设置 input
-    void setOutput(float output) {function::output = output; }          // 设置 output
+    void setOutput(float output) {function::output = output; \
+        std::cout << function::output;}                                 // 设置 output
 };
 
 class square : public function {
 public:
-    using function::function;
+    explicit square(float input) : function(input){
+        square::forward();
+    }
     void forward() override;
+    float backward() override;
+};
+
+class exp_ : public function {
+public:
+    explicit exp_(float input) : function(input){
+        exp_::forward();
+    }
+    void forward() override;
+    float backward() override;
 };
 #endif //FUNCTION_H

@@ -2,10 +2,14 @@
 #include "function.h"
 #include "variable.h"
 
-int main(){
+int main()
+{
     square f(3.0);
-    f.forward();
+    exp_ g(1.0);
+    std::cout << "Output: " << g.returnOutput() << std::endl;
+    std::cout << "backforward: " << g.backward() << std::endl;
+
     std::cout << "Output: " << f.returnOutput() << std::endl;
+    std::cout << "backforward: " << f.backward() << std::endl;
     return 0;
-    // TIP See CLion help at <a href="https://www.jetbrains.com/help/clion/">jetbrains.com/help/clion/</a>. Also, you can try interactive lessons for CLion by selecting 'Help | Learn IDE Features' from the main menu.
 }

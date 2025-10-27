@@ -13,3 +13,27 @@ void square::forward(){
     float r = in * in;  // avoid pow for simple square (keeps float precision)
     setOutput(r);
 }
+
+/**
+ * @brief  square 类的反向传播函数。
+ */
+float square::backward(){
+    return 2 * getInput();
+}
+
+/**
+ * @brief  exp 类的前向传播函数。
+ */
+void exp_::forward(){
+    float in = getInput();
+    float r = std::exp(in);
+    setOutput(r);
+}
+
+/**
+ * @brief  exp 类的反向传播函数。
+ */
+float exp_::backward(){
+    return std::exp(getInput());
+}
+
