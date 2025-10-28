@@ -4,12 +4,13 @@
 
 int main()
 {
-    square f(3.0);
-    exp_ g(1.0);
+    variable x(3.0);
+    square f(x);
+    exp_ g(x);
     std::cout << "Output: " << g.returnOutput() << std::endl;
-    std::cout << "backforward: " << g.backward() << std::endl;
+    std::cout << "backforward: " << g.backward(1.0) << std::endl;
 
     std::cout << "Output: " << f.returnOutput() << std::endl;
-    std::cout << "backforward: " << f.backward() << std::endl;
+    std::cout << "backforward: " << f.backward(1.0) << std::endl;
     return 0;
 }

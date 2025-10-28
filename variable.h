@@ -5,16 +5,19 @@
 #ifndef VARIABLE_H
 #define VARIABLE_H
 
-#include <string>
+
 
 class variable{
 private:
     float value = 0;
     float grad = 0;
 public:
-    variable(float value){
+    explicit variable(float value){
         variable::value = value;
     }
+    [[nodiscard]]float getValue() const { return this->value; };
+    [[nodiscard]]float getGrad() const { return this->grad; };
+    void setGrad(float grad){ this->grad = grad; };
 };
 
 

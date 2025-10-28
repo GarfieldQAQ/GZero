@@ -3,7 +3,7 @@
 //
 
 #include "function.h"
-
+#include <cmath>
 /**
  * @brief  square 类的前向传播函数，实现输入值的平方计算。
  */
@@ -16,8 +16,9 @@ void square::forward(){
 
 /**
  * @brief  square 类的反向传播函数。
+ * @param
  */
-float square::backward(){
+float square::backward(float lastGrad){
     return 2 * getInput();
 }
 
@@ -33,7 +34,7 @@ void exp_::forward(){
 /**
  * @brief  exp 类的反向传播函数。
  */
-float exp_::backward(){
+float exp_::backward(float lastGrad){
     return std::exp(getInput());
 }
 
