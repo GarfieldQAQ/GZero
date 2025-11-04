@@ -6,7 +6,7 @@ int main()
 {
     variable x(3.0);
     square f(x);
-    exp_ g(x);
+    exp_ g(f.returnOutput());
     std::cout << "Output: " << g.returnOutput() << std::endl;
     std::cout << "backforward: " << g.backward(1.0) << std::endl;
 

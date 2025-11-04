@@ -18,6 +18,7 @@ public:
     [[nodiscard]]float getValue() const { return this->value; };
     [[nodiscard]]float getGrad() const { return this->grad; };
     void setGrad(float grad){ this->grad = grad; };
+    void setValue(float value){ this->value = value; };
 };
 
 

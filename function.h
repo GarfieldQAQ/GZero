@@ -7,26 +7,24 @@
 
 
 
-#include <iostream>
 #include "variable.h"
 
 class function{
 private:
     float input;
-    float output;
+    variable output;
 
 public:
-    explicit function(variable input){
-        function::input = input.getValue();
-        function::output = 0;
+    explicit function(variable input) : output(0.0f) {
+        this->input = input.getValue();
     }
-    virtual ~function() = default;                                      // 虚析构函数
-    virtual void forward() {;}                                          // 前向传播更新 output
-    virtual float backward(float lastGrad) { return 0.0f;}                            // 反向传播更新 input 的梯度
-    [[nodiscard]] float getInput() const { return input; }              // 获取 input
-    [[nodiscard]] float returnOutput() const { return output; }         // 获取 output
-    void setInput(float input) { function::input = input; }             // 设置 input
-    void setOutput(float output) {function::output = output; }          // 设置 output
+    virtual ~function() = default;                                          // 虚析构函数
+    virtual void forward() {;}                                              // 前向传播更新 output
+    virtual float backward(float lastGrad) { return 0.0f;}                  // 反向传播更新 input 的梯度
+    [[nodiscard]] float getInput() const { return input; }                  // 获取 input
+    [[nodiscard]] variable returnOutput() const { return output; }          // 获取 output
+    void setInput(float input) { function::input = input; }                 // 设置 input
+    void setOutput(float output) {function::output.setValue(output); }      // 设置 output
 };
 
 class square : public function {
@@ -47,7 +45,5 @@ public:
     float backward(float lastGrad) override;
 };
 
-class log_ : public function{
-public:
-};
+
 #endif //FUNCTION_H
